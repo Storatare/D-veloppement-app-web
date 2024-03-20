@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue les plantes</title>
+    <link rel="stylesheet" href="templates\assets\css\style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="templates\assets\img\logo.png" alt="Logo">
+            </div>
+            <h1>Bienvenue les plantes</h1>
+            <nav>
+                <ul>
+                    <li><a href="#top">Haut</a></li>
+                    <li><a href="#slider">Des plantes</a></li>
+                    <li><a href="#vignettes">Des belles plantes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Contenu de votre site -->
+        <section id="slider">
+            <div class = "name"><h2>Presentation de plantes</h2></div>
+            <div class="slider-container">
+                <div class="menu">
+                    <label for="slide-dot-1"></label>
+                    <label for="slide-dot-2"></label>
+                    <label for="slide-dot-3"></label>
+                </div>
+    
+                <input class="slide-input" id="slide-dot-1" type="radio" name="slides" checked>
+                <img class="slide-img" src="templates\assets\img\image1.jpg">
+    
+                <input class="slide-input" id="slide-dot-2" type="radio" name="slides">
+                <img class="slide-img" src="templates\assets\img\image2.jpg">
+    
+                <input class="slide-input" id="slide-dot-3" type="radio" name="slides">
+                <img class="slide-img" src="templates\assets\img\image3.jpg">
+    
+            </div>
+        </section>        
+
+        <section id="vignettes">
+            <div class = "name"><h2>Des belles plantes</h2></div>
+            <div class="vignettes-container">
+                <div class="vignette">
+                    <img src="templates\assets\img\image1.jpg" alt="Produit 1">
+                    <p>Voici une premiere belle plante</p>
+                </div>
+                <div class="vignette">
+                    <img src="templates\assets\img\image2.jpg" alt="Produit 2">
+                    <p>Une autre belle plante</p>
+                </div>
+                <div class="vignette">
+                    <img src="templates\assets\img\image3.jpg" alt="Produit 3">
+                    <p>Et une derniere tres belle plante</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <a href="#" class="custom-link">2024</a> | <a href="#" class="custom-link">Mentions légales</a> | <a href="#" class="custom-link">Tous droits réservés</a> | <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees" class="custom-link">RGPD</a></p>
+        </div>
+    </footer>
+</body>
+</html>

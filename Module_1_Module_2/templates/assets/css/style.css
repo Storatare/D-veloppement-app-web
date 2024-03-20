@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5px;
+}
+
+header {
+    background-color: #085400;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.logo {
+    float: left;
+}
+
+.logo img {
+    height: 50px;
+}
+
+h1 {
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+    margin: revert;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer {
+    background-color: #085400;
+    color: #fff;
+    padding: 20px 0;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo {
+        float: none;
+        margin-bottom: 10px;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    .vignettes-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .vignette {
+        width: calc(50% - 20px);
+        margin-bottom: 20px;
+    }
+
+    .slider-container {
+        max-width: 100%;
+        position: relative;
+        margin: auto;
+        height: 450px;
+        overflow: hidden;
+    }
+
+    .slide-img {
+        width: 100%;
+        height: 400px;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: 10;
+        transition: left 0s 0.75s;
+        border-radius: 10px
+    }
+
+    [id^="slide"]:checked + .slide-img {
+        left: 0;
+        z-index: 100;
+        transition: left 0.65s ease-out;
+        border-radius: 10px
+    }
+
+    .menu {
+        position: absolute;
+        left: 0;
+        z-index: 11;
+        width: 100%;
+        bottom: 0;
+        text-align: center;
+    }
+
+    .menu label {
+        cursor: pointer;
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: #ccc;
+        border-radius: 50px;
+        margin: 0 0.2em 1em;
+    }
+
+    .menu label:hover,
+    .menu label:focus {
+        background: #085400;
+    }
+}
+
+@media (min-width: 769px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-gap: 20px;
+    }
+
+    .vignette {
+        width: calc(33.33% - 20px);
+    }
+
+    .vignettes-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .slider-container {
+        max-width: 800px;
+        position: relative;
+        margin: auto;
+        height: 450px;
+        overflow: hidden;
+    }
+
+    .menu {
+        position: absolute;
+        left: 0;
+        z-index: 11;
+        width: 100%;
+        bottom: 0;
+        text-align: center;
+    }
+
+    .menu label {
+        cursor: pointer;
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: #ccc;
+        border-radius: 50px;
+        margin: 0 0.2em 1em;
+    }
+
+    .menu label:hover,
+    .menu label:focus {
+        background: #085400;
+    }
+
+    .slide-input {
+        opacity: 0;
+    }
+
+    .slide-img {
+        width: 100%;
+        height: 400px;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: 10;
+        transition: left 0s 0.75s;
+        border-radius: 10px
+    }
+
+    [id^="slide"]:checked + .slide-img {
+        left: 0;
+        z-index: 100;
+        transition: left 0.65s ease-out;
+        border-radius: 10px
+    }
+}
+
+.vignette {
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.vignette img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.vignette p {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    margin: 0;
+}
+
+.name {
+    text-align: center;
+    color: #085400;
+}
+
+
+.custom-link {
+    color: #00bd00;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.custom-link:hover {
+    color: #4dfc53;
+}
