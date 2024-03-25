@@ -26,18 +26,36 @@ elementByid1.style.color  = 'red';
 
 
 function calculate() {
-    var inputA = parseFloat(document.getElementById('inputA').value);
-    var inputB = parseFloat(document.getElementById('inputB').value);
-    
-    if (!isNaN(inputA) && !isNaN(inputB)) {
-      var result = inputA + inputB;
-      document.getElementById('section3').innerText = 'Le résultat de l\'addition est : ' + result;
-      alert(result);
-    } else {
-      document.getElementById('section3').innerText = 'Veuillez entrer des nombres valides.';
+    var valueA = parseFloat(document.getElementById('inputA').value);
+    var operator = document.getElementById('inputOpe').value;
+    var valueB = parseFloat(document.getElementById('inputB').value);
+
+    if (isNaN(valueA) || isNaN(valueB)) {
+        document.getElementById('section3').innerText = "Veuillez saisir des nombres valides.";
+        return;
     }
-  }
 
+    var result;
+    switch (operator) {
+        case '+':
+            result = valueA + valueB;
+            break;
+        case '-':
+            result = valueA - valueB;
+            break;
+        case '*':
+            result = valueA * valueB;
+            break;
+        case '/':
+            if (valueB === 0) {
+                result = "Division par zéro impossible.";
+            } else {
+                result = valueA / valueB;
+            }
+            break;
+        default:
+            result = "Opérateur invalide.";
+    }
 
-let elementByClass2 = document.getElementsByClassName('section3')
-
+    document.getElementById('section3').innerText = "Résultat : " + result;
+}
