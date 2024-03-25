@@ -4,7 +4,7 @@ include_once 'service.php';
 
 function dbConnect(){
     try{
-        $pdo = new PDO('mysql:host=localhost;dbname=esiea_web', 'root', '');
+        $pdo = new PDO('mysql:host=localhost;dbname=portfolio', 'root', '');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     }catch(Exception $e){
@@ -20,7 +20,7 @@ function registerUser($nom, $prenom, $adresse, $email, $password, $confirmPasswo
     functions\verifyCsrfToken();
     try {
         // Vérifier si l'email existe déjà (Prévention d'injection SQL)
-        $stmt = $pdo->prepare("SELECT id FROM utilisateurs WHERE email = ?");
+        $stmt = $pdo->prepare("SELECT id FROM portfoliotable WHERE email = ?");
         $stmt->execute([$email]);
         $existingUser = $stmt->fetch();
 
@@ -33,7 +33,7 @@ function registerUser($nom, $prenom, $adresse, $email, $password, $confirmPasswo
         } else {
             // Enregistrement réussi
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $pdo->prepare("INSERT INTO utilisateurs (nom, prenom, adresse, email, password, role) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt = $pdo->prepare("INSERT INTO portfoliotable (nom, prenom, adresse, email, password, role) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->execute([$nom, $prenom, $adresse, $email, $hashedPassword, $defaultRole]);
             return true;
         }
@@ -47,7 +47,7 @@ function loginUser($email, $password) {
 
     try {
         // Récupérer les informations de l'utilisateur (Requête préparée pour prévenir l'injection SQL)
-        $stmt = $pdo->prepare("SELECT id, email, password FROM utilisateurs WHERE email = ?");
+        $stmt = $pdo->prepare("SELECT id, email, password FROM portfoliotable WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
@@ -71,7 +71,7 @@ function getUserInfos($id) {
 
     try {
         // Récupérer les informations de l'utilisateur par son ID (Requête préparée pour prévenir l'injection SQL)
-        $stmt = $pdo->prepare("SELECT id, nom, prenom, adresse, email FROM utilisateurs WHERE id = ?");
+        $stmt = $pdo->prepare("SELECT id, nom, prenom, adresse, email FROM portfoliotable WHERE id = ?");
         $stmt->execute([$id]);
         $userInfo = $stmt->fetch();
 
@@ -95,12 +95,12 @@ function updateUserInfo($id, $nom, $prenom, $adresse, $email, $password, $confir
             } else {
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         
-                $stmt = $pdo->prepare("UPDATE utilisateurs SET nom = ?, prenom = ?, adresse = ?, email = ?, password = ? WHERE id = ?");
+                $stmt = $pdo->prepare("UPDATE portfoliotable SET nom = ?, prenom = ?, adresse = ?, email = ?, password = ? WHERE id = ?");
                 $stmt->execute([$nom, $prenom, $adresse, $email, $hashedPassword, $id]);
                 return true;
             }
         } else {
-            $stmt = $pdo->prepare("SELECT id FROM utilisateurs WHERE email = ?");
+            $stmt = $pdo->prepare("SELECT id FROM portfoliotable WHERE email = ?");
             $stmt->execute([$email]);
             $existingUser = $stmt->fetch();
 
@@ -113,7 +113,7 @@ function updateUserInfo($id, $nom, $prenom, $adresse, $email, $password, $confir
             } else {
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         
-                $stmt = $pdo->prepare("UPDATE utilisateurs SET nom = ?, prenom = ?, adresse = ?, email = ?, password = ? WHERE id = ?");
+                $stmt = $pdo->prepare("UPDATE portfoliotable SET nom = ?, prenom = ?, adresse = ?, email = ?, password = ? WHERE id = ?");
                 $stmt->execute([$nom, $prenom, $adresse, $email, $hashedPassword, $id]);
                 $_SESSION['email'] = $email;
                 
@@ -132,7 +132,7 @@ function closeAccount($id) {
 
     try {
         // Supprimer le compte de l'utilisateur (Requête préparée pour prévenir l'injection SQL)
-        $stmt = $pdo->prepare("DELETE FROM utilisateurs WHERE id = ?");
+        $stmt = $pdo->prepare("DELETE FROM portfoliotable WHERE id = ?");
         $stmt->execute([$id]);
 
         // Déconnecter l'utilisateur et rediriger vers la page d'accueil
