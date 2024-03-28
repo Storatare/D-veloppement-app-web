@@ -26,4 +26,17 @@ function afficherSuggestions(suggestions) {
         li.textContent = suggestion.properties.label;
         suggestionsList.appendChild(li);
     });
+
+    addSuggestionClickListener();
+}
+
+function addSuggestionClickListener() {
+    suggestionsList.addEventListener('click', function(event) {
+        if (event.target && event.target.nodeName == 'LI') {
+            const suggestionText = event.target.textContent;
+            adresseInput.value = suggestionText;
+            document.getElementById('adresse').value = suggestionText;
+            suggestionsList.innerHTML = '';
+        }
+    });
 }
